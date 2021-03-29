@@ -33,26 +33,20 @@ decl Rock : Sign
 decl Paper : Sign
 decl Scissors : Sign
 
-#rule <rockBeatsSc>
-#for r : Rock , p : Paper
-#if noop
-#then Bets p r
-
-rule <winner>
-for a : Player, g : Game, r : Sign, s : Sign
-if (exists b : Player . Participate_in a g  && Participate_in b g  && 
-                                           Throw a r  && Throw b s && Beat r s
-                                           )
+rule <winner1>
+for a : Player, b : Player, g : Game, sign1 : Sign, sign2 : Sign
+if (Participate_in a g  && Participate_in b g  && 
+                           Throw a sign1 && Throw b sign2 && Beat sign1 sign2)
 then Win a g
 
-rule <loser>
+rule <winner2>
 for a : Player, g : Game 
 if (exists b : Player .
       (exists s : Sign . 
         (exists r : Sign . Participate_in a g  && Participate_in b g  && 
-                                           Throw a r && Throw b s && Beat s r
+                                           Throw a r && Throw b s && Beat r s
                                            )))
-then Lose a g
+then Win a g
 
 # TODO: make these into facts
 assert Beats Rock Scissors

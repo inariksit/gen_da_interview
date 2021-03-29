@@ -1,0 +1,5 @@
+1. Is A a player
+2. Is B a player
+3. What did A throw
+4. What did B throw
+5. Are they playiing a game
