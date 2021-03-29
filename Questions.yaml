@@ -1,0 +1,48 @@
+# 1. Who is player 1 (1 and 2 are determiners)
+# 2. Who is player 2 (1 and 2 are determiners)
+# 3. What is the game 
+# 4. What did Player 1 throw
+# 5. What did Player 2 throw
+
+rules: rps.pl 
+query: win(A,RPS)
+data:
+  - name: player1
+    ask: Who is Player 1?
+    tell: X
+    type: String
+    encodings:
+      - player(X) 
+    attributes:
+      - name: throw1 
+        ask: What did Y throw?
+        tell: X
+        type: Enum
+        encodings: throw(Y,X)
+        options: [
+            rock: Rock , 
+            paper: Paper ,
+            scissors: Scissors
+        ]
+  - name: player2
+    ask: Who is Player 2?
+    tell: X
+    type: String
+    encodings:
+      - player(X)  
+    attributes:
+      - name: throw2
+        ask: What did Y throw?
+        tell: X
+        type: Enum
+        encodings: throw(Y,X)
+        options: [
+            rock: Rock ,
+            paper: Paper,
+            scssors: Scissors
+        ]
+  - name: game
+    ask: What is the game?
+    tell: X
+    type: String
+    encodings: game

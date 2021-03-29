@@ -15,7 +15,7 @@ Game -> "game_1_N"
 class Sign
 
 class Player {
-    throws : Sign
+    throw : Sign
 }
 
 class Game {
@@ -34,9 +34,13 @@ decl Paper : Sign
 decl Scissors : Sign
 
 rule <winner1>
+-- Need to cover all variables declared in `for` part
+-- We can order them by what is found in the class definitions
+-- We can make a question into a subquestion, if we're asking about some class C, a field of C is present in the if-expression or then-expression
+-- If that subquestion covers some other, later appearing variable in the `for` part, then don't ask about that variable again. 
 for a : Player, b : Player, g : Game, sign1 : Sign, sign2 : Sign
 if (Participate_in a g  && Participate_in b g  && 
-                           Throw a sign1 && Throw b sign2 && Beat sign1 sign2)
+                           a.throw(sign1) && b.throw(sign2) && Beat sign1 sign2)
 then Win a g
 
 rule <winner2>

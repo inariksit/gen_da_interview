@@ -1,6 +1,0 @@
-1. Who is player 1 (1 and 2 are determiners)
-2. Who is player 2 (1 and 2 are determiners)
-3. What is the game 
-4. What did Player 1 throw
-5. What did Player 2 throw
-
